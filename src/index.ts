@@ -239,4 +239,8 @@ export const MigrationError = {
   DatasourceProviderDontMatchMigrationLock: 'P3014',
 } as const
 
-export const PrismaError = { ...CommonError, ...MigrationError, ...QueryError }
+export const PrismaError = {
+  ...CommonError,
+  ...MigrationError,
+  ...QueryError,
+} as const
