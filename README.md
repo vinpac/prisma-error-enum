@@ -1,3 +1,5 @@
+![Deploy](https://github.com/vinpac/prisma-error-enum/workflows/Deploy/badge.svg)
+[![npm version](https://badge.fury.io/js/prisma-error-enum.svg)](https://badge.fury.io/js/prisma-error-enum)
 # prisma-error-enum
 
 A more descriptive way to detect Prisma Errors. Reference: https://www.prisma.io/docs/reference/api-reference/error-reference#error-codes
