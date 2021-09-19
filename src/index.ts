@@ -47,6 +47,14 @@ export const CommonError = {
    * Your Prisma schema is using features that are not supported for the version of the database. Database version: {database_version} Errors:
    */
   UnsupportedFeaturesAtPrismaSchema: 'P1015',
+  /**
+   * Your raw query had an incorrect number of parameters. Expected: `{expected}`, actual: `{actual}`.
+   */
+  IncorrectNumberOfParameters: 'P1016',
+  /**
+   * Server has closed the connection.
+   */
+  ServerClosedConnection: 'P1017',
 } as const
 
 export const QueryError = {
