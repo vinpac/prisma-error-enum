@@ -12,7 +12,11 @@ export const CommonError = {
    */
   ConnectionTimedOut: 'P1002',
   /**
-   * Database {database_file_name} does not exist at {database_file_path} "<br />"Database `{database_name}.{database_schema_name}` does not exist on the database server at `{database_host}:{database_port}`. "<br />"Database `{database_name}` does not exist on the database server at `{database_host}:{database_port}`.
+   * Database `{database_file_name}` does not exist at `{database_file_path}`
+   *
+   * Database `{database_name}.{database_schema_name}` does not exist on the database server at `{database_host}:{database_port}`.
+   *
+   * Database `{database_name}` does not exist on the database server at `{database_host}:{database_port}`.
    */
   DatabaseFileNotFound: 'P1003',
   /**
@@ -28,23 +32,23 @@ export const CommonError = {
    */
   AccessDeniedForUser: 'P1010',
   /**
-   * Error opening a TLS connection: {message}
+   * Error opening a TLS connection: `{message}`
    */
   TLSConnectionError: 'P1011',
   /**
-   * {full_error}
+   * `{full_error}`
    */
   Error: 'P1012',
   /**
-   * The provided database string is invalid. {details}
+   * The provided database string is invalid. `{details}`
    */
   InvalidDatabaseString: 'P1013',
   /**
-   * The underlying {kind} for model `{model}` does not exist.
+   * The underlying `{kind}` for model `{model}` does not exist.
    */
   KindForModelDoesNotExist: 'P1014',
   /**
-   * Your Prisma schema is using features that are not supported for the version of the database. Database version: {database_version} Errors:
+   * Your Prisma schema is using features that are not supported for the version of the database. Database version: `{database_version}` Errors:
    */
   UnsupportedFeaturesAtPrismaSchema: 'P1015',
   /**
@@ -59,7 +63,7 @@ export const CommonError = {
 
 export const QueryError = {
   /**
-   * The provided value for the column is too long for the column's type. Column: {column_name}
+   * The provided value for the column is too long for the column's type. Column: `{column_name}`
    */
   ValueTooLongForColumnType: 'P2000',
 
@@ -69,7 +73,7 @@ export const QueryError = {
   RecordDoesNotExist: 'P2001',
 
   /**
-   * Unique constraint failed on the {constraint}
+   * Unique constraint failed on the `{constraint}`
    */
   UniqueConstraintViolation: 'P2002',
 
@@ -114,7 +118,7 @@ export const QueryError = {
   RawQueryError: 'P2010',
 
   /**
-   * Null constraint violation on the {constraint}
+   * Null constraint violation on the `{constraint}`
    */
   NullConstraintViolation: 'P2011',
 
@@ -134,12 +138,12 @@ export const QueryError = {
   RequiredRelationViolation: 'P2014',
 
   /**
-   * A related record could not be found. {details}
+   * A related record could not be found. `{details}`
    */
   RelatedRecordNotFound: 'P2015',
 
   /**
-   * Query interpretation error. {details}
+   * Query interpretation error. `{details}`
    */
   InterpretationError: 'P2016',
 
@@ -149,17 +153,17 @@ export const QueryError = {
   RecordsForParentAndChildNotConnected: 'P2017',
 
   /**
-   * The required connected records were not found. {details}
+   * The required connected records were not found. `{details}`
    */
   RequiredConnnectedRecordsNotFound: 'P2018',
 
   /**
-   * Input error. {details}
+   * Input error. `{details}`
    */
   InputError: 'P2019',
 
   /**
-   * Value out of range for the type. {details}
+   * Value out of range for the type. `{details}`
    */
   ValueOutOfRange: 'P2020',
 
@@ -174,12 +178,12 @@ export const QueryError = {
   ColumnDoesNotExist: 'P2022',
 
   /**
-   * Inconsistent column data: {message}
+   * Inconsistent column data: `{message}`
    */
   InconsistentColumnData: 'P2023',
 
   /**
-   * Timed out fetching a new connection from the pool. Please consider reducing the number of requests or increasing the `connection_limit` parameter (https://www.prisma.io/docs/concepts/components/prisma-client/connection-management#connection-pool). Current limit: {connection_limit}.
+   * Timed out fetching a new connection from the pool. Please consider reducing the number of requests or increasing the `connection_limit` parameter (https://www.prisma.io/docs/concepts/components/prisma-client/connection-management#connection-pool). Current limit: `{connection_limit}`.
    */
   TimedOutFetchingConnectionFromThePool: 'P2024',
 
@@ -201,15 +205,15 @@ export const QueryError = {
 
 export const MigrationError = {
   /**
-   * Failed to create database: {database_error}
+   * Failed to create database: `{database_error}`
    */
   FailedToCreateDatabase: 'P3000',
   /**
-   * Migration possible with destructive changes and possible data loss: {migration_engine_destructive_details}
+   * Migration possible with destructive changes and possible data loss: `{migration_engine_destructive_details}`
    */
   PossibleDestructiveOrDataLossChanges: 'P3001',
   /**
-   * The attempted migration was rolled back: {database_error}
+   * The attempted migration was rolled back: `{database_error}`
    */
   MigrationRolledBack: 'P3002',
   /**
@@ -237,7 +241,7 @@ export const MigrationError = {
    */
   MigrationAlreadyApplied: 'P3008',
   /**
-   * migrate found failed migrations in the target database, new migrations will not be applied. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve {details}
+   * migrate found failed migrations in the target database, new migrations will not be applied. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve `{details}`
    */
   FailedMigrationsFound: 'P3009',
   /**
@@ -290,6 +294,7 @@ export const MigrationError = {
   DatasourceProvidersDontMatch: 'P3019',
   /**
    * The automatic creation of shadow databases is disabled on Azure SQL. Please set up a shadow database using the `shadowDatabaseUrl` datasource attribute.
+   *
    * Read the docs page for more details: https://pris.ly/d/migrate-shadow
    */
   ShadowDatabasesAutomaticCreationIsDisabled: 'P3020',
