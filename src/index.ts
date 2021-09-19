@@ -12,7 +12,11 @@ export const CommonError = {
    */
   ConnectionTimedOut: 'P1002',
   /**
-   * Database {database_file_name} does not exist at {database_file_path} "<br />"Database `{database_name}.{database_schema_name}` does not exist on the database server at `{database_host}:{database_port}`. "<br />"Database `{database_name}` does not exist on the database server at `{database_host}:{database_port}`.
+   * Database `{database_file_name}` does not exist at `{database_file_path}`
+   *
+   * Database `{database_name}.{database_schema_name}` does not exist on the database server at `{database_host}:{database_port}`.
+   *
+   * Database `{database_name}` does not exist on the database server at `{database_host}:{database_port}`.
    */
   DatabaseFileNotFound: 'P1003',
   /**
@@ -28,30 +32,38 @@ export const CommonError = {
    */
   AccessDeniedForUser: 'P1010',
   /**
-   * Error opening a TLS connection: {message}
+   * Error opening a TLS connection: `{message}`
    */
   TLSConnectionError: 'P1011',
   /**
-   * {full_error}
+   * `{full_error}`
    */
   Error: 'P1012',
   /**
-   * The provided database string is invalid. {details}
+   * The provided database string is invalid. `{details}`
    */
   InvalidDatabaseString: 'P1013',
   /**
-   * The underlying {kind} for model `{model}` does not exist.
+   * The underlying `{kind}` for model `{model}` does not exist.
    */
   KindForModelDoesNotExist: 'P1014',
   /**
-   * Your Prisma schema is using features that are not supported for the version of the database. Database version: {database_version} Errors:
+   * Your Prisma schema is using features that are not supported for the version of the database. Database version: `{database_version}` Errors:
    */
   UnsupportedFeaturesAtPrismaSchema: 'P1015',
+  /**
+   * Your raw query had an incorrect number of parameters. Expected: `{expected}`, actual: `{actual}`.
+   */
+  IncorrectNumberOfParameters: 'P1016',
+  /**
+   * Server has closed the connection.
+   */
+  ServerClosedConnection: 'P1017',
 } as const
 
 export const QueryError = {
   /**
-   * The provided value for the column is too long for the column's type. Column: {column_name}
+   * The provided value for the column is too long for the column's type. Column: `{column_name}`
    */
   ValueTooLongForColumnType: 'P2000',
 
@@ -61,7 +73,7 @@ export const QueryError = {
   RecordDoesNotExist: 'P2001',
 
   /**
-   * Unique constraint failed on the {constraint}
+   * Unique constraint failed on the `{constraint}`
    */
   UniqueConstraintViolation: 'P2002',
 
@@ -106,7 +118,7 @@ export const QueryError = {
   RawQueryError: 'P2010',
 
   /**
-   * Null constraint violation on the {constraint}
+   * Null constraint violation on the `{constraint}`
    */
   NullConstraintViolation: 'P2011',
 
@@ -126,12 +138,12 @@ export const QueryError = {
   RequiredRelationViolation: 'P2014',
 
   /**
-   * A related record could not be found. {details}
+   * A related record could not be found. `{details}`
    */
   RelatedRecordNotFound: 'P2015',
 
   /**
-   * Query interpretation error. {details}
+   * Query interpretation error. `{details}`
    */
   InterpretationError: 'P2016',
 
@@ -141,17 +153,17 @@ export const QueryError = {
   RecordsForParentAndChildNotConnected: 'P2017',
 
   /**
-   * The required connected records were not found. {details}
+   * The required connected records were not found. `{details}`
    */
   RequiredConnnectedRecordsNotFound: 'P2018',
 
   /**
-   * Input error. {details}
+   * Input error. `{details}`
    */
   InputError: 'P2019',
 
   /**
-   * Value out of range for the type. {details}
+   * Value out of range for the type. `{details}`
    */
   ValueOutOfRange: 'P2020',
 
@@ -166,27 +178,42 @@ export const QueryError = {
   ColumnDoesNotExist: 'P2022',
 
   /**
-   * Inconsistent column data: {message}
+   * Inconsistent column data: `{message}`
    */
   InconsistentColumnData: 'P2023',
 
   /**
-   * Timed out fetching a new connection from the pool. Please consider reducing the number of requests or increasing the `connection_limit` parameter (https://www.prisma.io/docs/concepts/components/prisma-client/connection-management#connection-pool). Current limit: {connection_limit}.
+   * Timed out fetching a new connection from the pool. Please consider reducing the number of requests or increasing the `connection_limit` parameter (https://www.prisma.io/docs/concepts/components/prisma-client/connection-management#connection-pool). Current limit: `{connection_limit}`.
    */
   TimedOutFetchingConnectionFromThePool: 'P2024',
+
+  /**
+   * An operation failed because it depends on one or more records that were required but not found. `{cause}`
+   */
+  RecordsNotFound: 'P2025',
+
+  /**
+   * The current database provider doesn't support a feature that the query used: `{feature}`
+   */
+  UnsupportedProviderFeature: 'P2026',
+
+  /**
+   * Multiple errors occurred on the database during query execution: `{errors}`
+   */
+  MultipleErrors: 'P2027',
 } as const
 
 export const MigrationError = {
   /**
-   * Failed to create database: {database_error}
+   * Failed to create database: `{database_error}`
    */
   FailedToCreateDatabase: 'P3000',
   /**
-   * Migration possible with destructive changes and possible data loss: {migration_engine_destructive_details}
+   * Migration possible with destructive changes and possible data loss: `{migration_engine_destructive_details}`
    */
   PossibleDestructiveOrDataLossChanges: 'P3001',
   /**
-   * The attempted migration was rolled back: {database_error}
+   * The attempted migration was rolled back: `{database_error}`
    */
   MigrationRolledBack: 'P3002',
   /**
@@ -214,7 +241,7 @@ export const MigrationError = {
    */
   MigrationAlreadyApplied: 'P3008',
   /**
-   * migrate found failed migrations in the target database, new migrations will not be applied. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve {details}
+   * migrate found failed migrations in the target database, new migrations will not be applied. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve `{details}`
    */
   FailedMigrationsFound: 'P3009',
   /**
@@ -237,6 +264,40 @@ export const MigrationError = {
    * The datasource provider `{provider}` specified in your schema does not match the one specified in the migration_lock.toml. You will encounter errors when you try to apply migrations generated for a different provider. Please archive your current migration directory at a different location and start a new migration history with `prisma migrate dev`.
    */
   DatasourceProviderDontMatchMigrationLock: 'P3014',
+  /**
+   * Could not find the migration file at `{migration_file_path}`. Please delete the directory or restore the migration file.
+   */
+  MissingMigrationFile: 'P3015',
+  /**
+   * The fallback method for database resets failed, meaning Migrate could not clean up the database entirely. Original error: `{error_code}`
+   * `{inner_error}`
+   */
+  CouldNotCleanupDatabase: 'P3016',
+  /**
+   * The migration `{migration_name}` could not be found. Please make sure that the migration exists, and that you included the whole name of the directory. (example: `"20201207184859_initial_migration"`)
+   */
+  MigrationNotFound: 'P3017',
+  /**
+   * A migration failed to apply. New migrations can not be applied before the error is recovered from. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve
+   *
+   * Migration name: `{migration_name}`
+   *
+   * Database error code: `{database_error_code}`
+   *
+   * Database error:
+   * `{database_error}`
+   */
+  FailedToApplyMigration: 'P3018',
+  /**
+   * The datasource provider `{provider}` specified in your schema does not match the one specified in the migration_lock.toml, `{expected_provider}`. Please remove your current migration directory and start a new migration history with prisma migrate dev. Read more: https://pris.ly/d/migrate-provider-switch
+   */
+  DatasourceProvidersDontMatch: 'P3019',
+  /**
+   * The automatic creation of shadow databases is disabled on Azure SQL. Please set up a shadow database using the `shadowDatabaseUrl` datasource attribute.
+   *
+   * Read the docs page for more details: https://pris.ly/d/migrate-shadow
+   */
+  ShadowDatabasesAutomaticCreationIsDisabled: 'P3020',
 } as const
 
 export const PrismaError = {
