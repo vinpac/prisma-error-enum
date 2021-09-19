@@ -174,6 +174,21 @@ export const QueryError = {
    * Timed out fetching a new connection from the pool. Please consider reducing the number of requests or increasing the `connection_limit` parameter (https://www.prisma.io/docs/concepts/components/prisma-client/connection-management#connection-pool). Current limit: {connection_limit}.
    */
   TimedOutFetchingConnectionFromThePool: 'P2024',
+
+  /**
+   * An operation failed because it depends on one or more records that were required but not found. `{cause}`
+   */
+  RecordsNotFound: 'P2025',
+
+  /**
+   * The current database provider doesn't support a feature that the query used: `{feature}`
+   */
+  UnsupportedProviderFeature: 'P2026',
+
+  /**
+   * Multiple errors occurred on the database during query execution: `{errors}`
+   */
+  MultipleErrors: 'P2027',
 } as const
 
 export const MigrationError = {
