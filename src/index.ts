@@ -85,7 +85,7 @@ export const QueryError = {
   /**
    * A constraint failed on the database: `{database_error}`
    */
-  ContraintViolation: 'P2004',
+  ConstraintViolation: 'P2004',
 
   /**
    * The value `{field_value}` stored in the database for the field `{field_name}` is invalid for the field's type
