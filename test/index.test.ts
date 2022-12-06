@@ -1,11 +1,20 @@
-import { PrismaError, CommonError, MigrationError, QueryError } from '../src'
+import {
+  PrismaError,
+  PrismaCommonError,
+  PrismaMigrationError,
+  PrismaQueryError,
+  PrismaIntrospectionError,
+  PrismaDataProxyError,
+} from '../src'
 
 describe('PrismaError', () => {
-  test('PrismaError should contain CommonError, MigrationError and QueryError', () => {
+  test('PrismaError should contain PrismaCommonError, PrismaMigrationError, PrismaQueryError, PrismaIntrospectionError and PrismaDataProxyError,', () => {
     expect(PrismaError).toMatchObject({
-      ...CommonError,
-      ...MigrationError,
-      ...QueryError,
+      ...PrismaCommonError,
+      ...PrismaMigrationError,
+      ...PrismaQueryError,
+      ...PrismaIntrospectionError,
+      ...PrismaDataProxyError,
     })
   })
 
@@ -20,8 +29,12 @@ describe('PrismaError', () => {
 
       record[key] = name
     }
-    Object.keys(CommonError).forEach(check('CommonError'))
-    Object.keys(MigrationError).forEach(check('MigrationError'))
-    Object.keys(QueryError).forEach(check('QueryError'))
+    Object.keys(PrismaCommonError).forEach(check('PrismaCommonError'))
+    Object.keys(PrismaMigrationError).forEach(check('PrismaMigrationError'))
+    Object.keys(PrismaQueryError).forEach(check('PrismaQueryError'))
+    Object.keys(PrismaIntrospectionError).forEach(
+      check('PrismaIntrospectionError'),
+      Object.keys(PrismaDataProxyError).forEach(check('PrismaDataProxyError')),
+    )
   })
 })
