@@ -15,3 +15,5 @@ export const PrismaIntrospectionError = {
    */
   InconsistentSchema: 'P4002',
 } as const
+
+export type PrismaIntrospectionError = typeof PrismaIntrospectionError

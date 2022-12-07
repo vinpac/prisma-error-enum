@@ -135,3 +135,5 @@ export const PrismaMigrationError = {
    */
   DirectDdlIsNotSupported: 'P3022',
 } as const
+
+export type PrismaMigrationError = typeof PrismaMigrationError

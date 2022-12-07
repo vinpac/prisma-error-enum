@@ -117,3 +117,5 @@ export const PrismaCommonError = {
    */
   ServerClosedConnection: 'P1017',
 } as const
+
+export type PrismaCommonError = typeof PrismaCommonError

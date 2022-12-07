@@ -165,3 +165,5 @@ export const PrismaQueryError = {
    */
   TransactionFailed: 'P2034',
 } as const
+
+export type PrismaQueryError = typeof PrismaQueryError

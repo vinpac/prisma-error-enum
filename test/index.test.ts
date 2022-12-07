@@ -1,11 +1,17 @@
 import {
   PrismaError,
+  PrismaErrorKey,
+  PrismaErrorGroup,
+  PrismaErrorGroupKey,
   PrismaCommonError,
   PrismaMigrationError,
   PrismaQueryError,
   PrismaIntrospectionError,
   PrismaDataProxyError,
 } from '../src'
+
+/** Typed Object.keys() */
+const keys = <T extends {}>(o: T) => Object.keys(o) as (keyof T)[]
 
 describe('PrismaError', () => {
   test('PrismaError should contain PrismaCommonError, PrismaMigrationError, PrismaQueryError, PrismaIntrospectionError and PrismaDataProxyError,', () => {
@@ -19,8 +25,10 @@ describe('PrismaError', () => {
   })
 
   test('PrismaError should not eliminate any errors', () => {
-    const record: Record<string, string> = {}
-    const check = (name: string) => (key: string) => {
+    const record: Partial<Record<PrismaErrorKey, PrismaErrorGroup>> = {}
+    const check = <T extends PrismaErrorGroup>(name: T) => (
+      key: PrismaErrorGroupKey<T>,
+    ) => {
       if (record[key]) {
         throw new Error(
           `Both ${record[key]} and ${name} have an error called ${key}. This is a problem for PrismaError`,
@@ -29,12 +37,11 @@ describe('PrismaError', () => {
 
       record[key] = name
     }
-    Object.keys(PrismaCommonError).forEach(check('PrismaCommonError'))
-    Object.keys(PrismaMigrationError).forEach(check('PrismaMigrationError'))
-    Object.keys(PrismaQueryError).forEach(check('PrismaQueryError'))
-    Object.keys(PrismaIntrospectionError).forEach(
-      check('PrismaIntrospectionError'),
-      Object.keys(PrismaDataProxyError).forEach(check('PrismaDataProxyError')),
-    )
+
+    keys(PrismaCommonError).forEach(check('PrismaCommonError'))
+    keys(PrismaMigrationError).forEach(check('PrismaMigrationError'))
+    keys(PrismaQueryError).forEach(check('PrismaQueryError'))
+    keys(PrismaIntrospectionError).forEach(check('PrismaIntrospectionError'))
+    keys(PrismaDataProxyError).forEach(check('PrismaDataProxyError'))
   })
 })

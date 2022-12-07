@@ -93,3 +93,5 @@ export const PrismaDataProxyError = {
    */
   InteractiveTransactionError: 'P5015',
 } as const
+
+export type PrismaDataProxyError = typeof PrismaDataProxyError
