@@ -1,3 +1,4 @@
+export { PrismaError as default } from './all'
 export * from './all'
 export * from './common'
 export * from './query'

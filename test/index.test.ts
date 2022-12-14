@@ -1,4 +1,4 @@
-import {
+import PrismaErrorEnum, {
   PrismaError,
   PrismaErrorKey,
   PrismaErrorGroup,
@@ -17,6 +17,10 @@ import {
 const keys = <T extends {}>(o: T) => Object.keys(o) as (keyof T)[]
 
 describe('PrismaError', () => {
+  test('Default export should be PrismaError', () => {
+    expect(PrismaErrorEnum).toBe(PrismaError)
+  })
+
   test('PrismaError should contain PrismaCommonError, PrismaMigrationError, PrismaQueryError, PrismaIntrospectionError and PrismaDataProxyError', () => {
     expect(PrismaError).toMatchObject({
       ...PrismaCommonError,
