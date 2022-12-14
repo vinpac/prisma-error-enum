@@ -119,3 +119,12 @@ export const PrismaCommonError = {
 } as const
 
 export type PrismaCommonError = typeof PrismaCommonError
+
+/**
+ * @deprecated Use {@link PrismaCommonError} instead.
+ * @example
+ * ```ts
+ * import { PrismaCommonError } from 'prisma-error-enum'
+ * ```
+ */
+export const CommonError = PrismaCommonError

@@ -137,3 +137,12 @@ export const PrismaMigrationError = {
 } as const
 
 export type PrismaMigrationError = typeof PrismaMigrationError
+
+/**
+ * @deprecated Use {@link PrismaMigrationError} instead.
+ * @example
+ * ```ts
+ * import { PrismaMigrationError } from 'prisma-error-enum'
+ * ```
+ */
+export const MigrationError = PrismaMigrationError

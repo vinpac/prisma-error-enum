@@ -8,13 +8,16 @@ import {
   PrismaQueryError,
   PrismaIntrospectionError,
   PrismaDataProxyError,
+  CommonError,
+  MigrationError,
+  QueryError,
 } from '../src'
 
 /** Typed Object.keys() */
 const keys = <T extends {}>(o: T) => Object.keys(o) as (keyof T)[]
 
 describe('PrismaError', () => {
-  test('PrismaError should contain PrismaCommonError, PrismaMigrationError, PrismaQueryError, PrismaIntrospectionError and PrismaDataProxyError,', () => {
+  test('PrismaError should contain PrismaCommonError, PrismaMigrationError, PrismaQueryError, PrismaIntrospectionError and PrismaDataProxyError', () => {
     expect(PrismaError).toMatchObject({
       ...PrismaCommonError,
       ...PrismaMigrationError,
@@ -43,5 +46,18 @@ describe('PrismaError', () => {
     keys(PrismaQueryError).forEach(check('PrismaQueryError'))
     keys(PrismaIntrospectionError).forEach(check('PrismaIntrospectionError'))
     keys(PrismaDataProxyError).forEach(check('PrismaDataProxyError'))
+  })
+
+  test('Should be backward compatible with old variables CommonError, MigrationError and QueryError', () => {
+    expect(CommonError).toMatchObject(PrismaCommonError)
+    expect(MigrationError).toMatchObject(PrismaMigrationError)
+    expect(QueryError).toMatchObject(PrismaQueryError)
+    expect(PrismaError).toMatchObject({
+      ...CommonError,
+      ...MigrationError,
+      ...QueryError,
+      ...PrismaIntrospectionError,
+      ...PrismaDataProxyError,
+    })
   })
 })

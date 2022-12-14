@@ -167,3 +167,12 @@ export const PrismaQueryError = {
 } as const
 
 export type PrismaQueryError = typeof PrismaQueryError
+
+/**
+ * @deprecated Use {@link PrismaQueryError} instead.
+ * @example
+ * ```ts
+ * import { PrismaQueryError } from 'prisma-error-enum'
+ * ```
+ */
+export const QueryError = PrismaQueryError
